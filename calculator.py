@@ -16,7 +16,6 @@ while True:
 		num1 = float(tokens[1])
 		num2 = float(tokens[2])
 		num3 = float(tokens[3])
-		break
 	except ValueError:
 		print("Incorrect input. Try again")
 		continue
