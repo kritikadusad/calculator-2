@@ -4,18 +4,30 @@ Using the arithmetic.py file from Calculator Part 1, create the
 calculator program yourself in this file.
 """
 import sys
+import string
 from arithmetic import *
 operations = ['+', '-', '*', '/', 'square', 'cube', 'pow', 'mod', 'x+', 'cubes+']
 
 while True:
-	
 	user_input = input('What do you want to do: ')
 	tokens = user_input.split(' ')
+	tokens_length = len(tokens)
+	try:	
+		num1 = float(tokens[1])
+		num2 = float(tokens[2])
+		num3 = float(tokens[3])
+		break
+	except ValueError:
+		print("Incorrect input. Try again")
+		continue
+	except IndexError:
+		pass
 	
+	
+
 	
 # Initializing operated_result to None
 	operated_result = None
-# If the input is 'q', the program should quit 
 	if tokens[0] == 'q':
 		print('Goodbye!')
 		sys.exit()
@@ -23,11 +35,7 @@ while True:
 		if tokens[0] not in operations:
 			print('Incorrect operator. Please try again!')
 			continue
-		
-		elif len(tokens) == 2:
-			num1 = float(tokens[1])
-			num2 = 0
-			num3 = 0
+		elif tokens_length == 2:
 			if tokens[0] == 'square':
 				operated_result = square(num1)
 				print(operated_result)
@@ -35,10 +43,8 @@ while True:
 				operated_result = cube(num1)
 				print(operated_result)
 		
-		elif len(tokens) == 3:
-			num1 = float(tokens[1])
-			num2 = float(tokens[2])
-			num3 = 0
+		elif tokens_length == 3:
+
 			if tokens[0] == '+':
 				operated_result = add(num1, num2)
 				print(operated_result)
@@ -63,10 +69,8 @@ while True:
 			else:
 				print('You are providing an incorrect input. Try again!')
 		
-		elif len(tokens) == 4:
-			num1 = float(tokens[1])
-			num2 = float(tokens[2])
-			num3 = float(tokens[3])
+		elif tokens_length == 4:
+			
 			if tokens[0] == 'x+':
 				operated_result = add_mult(num1, num2, num3)
 				print(operated_result)
